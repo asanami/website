@@ -42,6 +42,9 @@ RUN chown -R webapp /usr/src/app && chmod -R oug-w /usr/src/app
 # Run everything as the unprivileged user
 USER webapp
 
+COPY entrypoint.sh .
+#ENTRYPOINT ["./entrypoint.sh"]
+
 # Use gunicorn as a web-server after running migration command
 CMD gunicorn \
 	--name botolphs \

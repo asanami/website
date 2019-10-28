@@ -98,13 +98,36 @@ As a prerequisite on route53, email sending can be configured using AWS' Simple 
 
 A lot of the terraform code here is aws specific.  Whilst the concepts can be applied across multiple cloud providers (E.g. networking, security groups, instances etc), the code and underlining API calls are cloud specific.  This would have to be rewritten using different terraform configuration code.
 
+For example, security groups in terraform.
+
+AWS:
+
+```
+data "aws_security_group" "default" {
+  name = "default"
+}
+```
+
+Openstack:
+
+```
+# create the security group
+resource "openstack_networking_secgroup_v2" "default" {
+  name = "default"
+}
+```
+
 In terms of specific services used here,  other cloud providers provide similar services which are analogues to AWS'.  E.g for an Azure comparison:
 
 Amazon Container Service (ECS) ( Fargate) ~= Azure Container Instances
-Simple Storage Services (S3) =~ Azure Blob storage
-RDS =~ Azure Database for PostgreSQL
-CodePipeline =~ Azure DevOps
-Route 53 =~  Azure DNS
+
+Simple Storage Services (S3) ~= Azure Blob storage
+
+RDS ~= Azure Database for PostgreSQL
+
+CodePipeline ~= Azure DevOps
+
+Route 53 ~= Azure DNS
 
 However, the configuration management of setting up and deploying to these services differ greatly, and for a large part would have to be re-written.
 

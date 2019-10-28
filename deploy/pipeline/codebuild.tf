@@ -96,7 +96,7 @@ resource "aws_codepipeline" "codepipeline" {
       output_artifacts = ["source_output"]
 
       configuration = {
-        OAuthToken   = "4c1b8f7d89ecf19c1666258ee95c13e97f4e4e16"
+        OAuthToken   = "${var.github_oauth_token}"
         Owner  = "stbotolphs"
         Repo   = "website"
         Branch = "master"

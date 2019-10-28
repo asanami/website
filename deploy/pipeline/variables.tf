@@ -113,5 +113,11 @@ variable "disable_ssl" {
   default     = "1"
 }
 
+variable "github_oauth_token" {
+  description = "Access token for github"
+}
+
+
+
 
 
